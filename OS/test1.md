@@ -87,4 +87,27 @@ waiting은 cpu를 당장 주어도 작업을 수행하지 못하는 상태로, i
 # Problem 5
 ### a) 비특권 명령 non-privileged instruction 의 예를 세 가지 소개하라. 
 ### b) 사용자 프로세스가 시스템 호출 system call 을 하면 CPU 실행 모드는 사용자 모드에서 시스템 모드로 변환된다. 왜 그렇게 변환되어야만 하는지 이유를 설명하라. 
+
 ### c) 시스템 호출 시 메모리의 사용자 user 영역에서 커널 kernel 영역으로 자료 전달은 어떻게 일어나는가?
+커널은 사용자 프로세스의 메모리 페이지에 마음대로 접근할 수 있다.
+
+
+6. 다음 용어의 의미를 간략히 설명하라.
+### a) convoy effect 
+프로세스 스케쥴링 방법 중 FCFS을 사용할 때 cpu burst time이 긴 프로세스가 먼저 와서 다른 많은 프로세스들의 대기 시간이 길어지는 현상
+
+### b) time-sharing system 
+OS에서 여러 프로세스 작업을 수행해야 할 때 각 프로세스별 일정 시간동안만 cpu를 할당하고 해당 시간이 지나면 cpu를 뺏어 다음 프로세스에게 준다
+
+### c) process control block
+os의 data 메모리에 들어 있는 프로세스들을 관리하기 위한 자료구조. Process id, 진행 상태, program counter 등이 포함되어있다.
+
+
+### d) dispatcher 
+현재 프로세스의 pcb를 저장하고 다음 프로세스의 pcb를 메모리에 올리는 문맥 교환 담당 커널 코드
+
+### e) critical section 
+코드 중 공유 데이터에 접근하는 부분
+
+### f) software interrupt
+사용자 프로세스가 커널 코드의 함수를 사용해야 할 때 (i/o 등) os에게 cpu를 넘겨 작업을 위탁하기 위해 cpu에게 거는 인터럽트.
