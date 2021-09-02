@@ -70,6 +70,28 @@ extension ViewController: UITableViewDelegate {
 
 - tableView.rowHeight의 값을 조정하는 것으로도 cell의 높이를 바꿀 수 있다. 위의 함수를 통해 설정하는 것보다 성능상 이점이 있다.
 
+
+# 눌렀을 때 다른 뷰를 불러오기
+- delegate의 tableView(:didSelectRowAt:)를 이용
+
+```swift
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 어떤 뷰를 불러 올 것인지
+        let storyBoard = UIStoryboard(name: "newView", bundle: nil)
+        let newView = storyBoard.instantiateViewController(identifier: "newView")
+        
+        // view가 storyboard에서 segue 등으로 연결되어 있는 경우
+        navigationController?.popToViewController(newView, animated: true)
+        // 연결되어 있지 않은 다른 뷰를 불러올 경우
+        navigationController?.pushViewController(newView, animated: true)
+        // navigation view가 아니라, present modal과 같이 단순히 뷰를 불러 올 경우
+        present(newView, animated: true)
+    }
+```
+
+- 이 때, viewController들이 navigation view controller가 아니더라도 navigationController?의 메소드들을 이용해 불러올 경우 네비게이션 뷰와 같이 나타나게 된다.
+
+
 # custom cell 만들기
 - 원하는 cell class를 만들고 storyboard에서 cell의 identity inspector에서 class를 커스텀 셀의 클래스로 변경해 준다.
 - label, image view 등 cell 안의 요소들을 커스텀 셀 클래스와 연결해 준다.
