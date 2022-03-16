@@ -200,3 +200,6 @@ struct SomeInteractor: EnvironmentKey {
 ```
 
 - 이와 같은 경우 View가 AppState을 구독하고 있기 때문에 PresentLogic, DisplayLogic이 필요없다.
+
+### 참고
+- [SwiftUI를 위한 클린 아키텍처](https://gon125.github.io/posts/SwiftUI를-위한-클린-아키텍처/)
